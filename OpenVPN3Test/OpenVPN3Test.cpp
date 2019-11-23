@@ -1,27 +1,33 @@
-// OpenVPN3Test.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
+#include <iostream>
+#include <thread>
+
+#include "TestClient.h"
 
 #define OPENVPN_CORE_API_VISIBILITY_HIDDEN
 
-#include <openvpn/common/platform.hpp>
-#include <client/ovpncli.cpp>
-
-
-
-#include <iostream>
-
-int main()
+int main(const int argc, const char** argv)
 {
-    std::cout << "Hello World!\n";
+    TestClient client;
+
+    if (client.ApplyConfigFile("vpnbook-fr8-tcp443.ovpn") == false) {
+        return -1;
+    }
+
+
+    TestClient::init_process();
+
+    std::thread lThread { [&]() -> void {
+        auto lStatus = client.connect();
+        std::cout << lStatus.message << std::endl;
+    } };
+
+    std::cout << "Press any key to exit!" << std::endl;
+    std::cin.get();
+
+    client.stop();
+    lThread.join();
+
+    TestClient::uninit_process();
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

@@ -162,7 +162,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\3rdparty\client\ovpncli.cpp" />
     <ClCompile Include="OpenVPN3Test.cpp" />
+    <ClCompile Include="TestClient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestClient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

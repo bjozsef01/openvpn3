@@ -18,5 +18,16 @@
     <ClCompile Include="OpenVPN3Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\3rdparty\client\ovpncli.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
