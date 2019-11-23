@@ -1,6 +1,13 @@
 // OpenVPN3Test.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#define OPENVPN_CORE_API_VISIBILITY_HIDDEN
+
+#include <openvpn/common/platform.hpp>
+#include <client/ovpncli.cpp>
+
+
+
 #include <iostream>
 
 int main()
